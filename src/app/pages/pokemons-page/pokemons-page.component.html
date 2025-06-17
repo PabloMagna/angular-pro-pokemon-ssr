@@ -1,0 +1,20 @@
+<h1 class="text-3xl">Listado de pokemons</h1>
+<h2 class="text-xl">Página Actual: {{ currentPage() }}</h2>
+
+<!-- @if (!isLoading()) {
+   <app-pokemon-list/>
+ }@else{
+   <app-pokemon-list-skeleton/>
+ } -->
+@if (pokemons().length !== 0) {
+  <app-pokemon-list [pokemons]="pokemons()" />
+}@else {
+  <app-pokemon-list-skeleton />
+}
+
+<!-- TODO pagination -->
+
+<div class="flex justify-between">
+  <button (click)="loadPokemons(-1)" class="mt-2 cursor-pointer">Anteriores</button>
+  <button (click)="loadPokemons(+1)" class="mt-2 cursor-pointer">Siguientes</button>
+</div>
